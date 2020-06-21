@@ -35,7 +35,7 @@ bot.on('message', async (message) => {
 
 	if (message.content == '*help') {
 		return message.channel.send(
-			"The bot is simple. For every message you sent there is a 1/10 chance you get a random (and publicly available) picture from the prime minister of the Netherlands: Mark Rutte. \n If you either use: Rutte, Mark or Markie in your message the chances will go up to 1/5. \n The bot draws from a database of 250+ pictures that it randomly chooses from every time it gets a chance to react to you. \n It's a silly bot for good reaction immages that you can have fun with."
+			"The bot is simple. For every message you sent there is a 1/10 chance you get a random (and publicly available) picture from the prime minister of the Netherlands: Mark Rutte. \n If you either use: Rutte, Mark, Markie or one of the secret words in your message the chances will go up to 1/5. \n The bot draws from a database of 250+ pictures that it randomly chooses from every time it gets a chance to react to you. \n It's a silly bot for good reaction immages that you can have fun with."
 		);
 	} else {
 		var rutte = message.content.includes('rutte');
@@ -54,6 +54,22 @@ bot.on('message', async (message) => {
 		var Markje = message.content.includes('Markje');
 		var MARKJE = message.content.includes('MARKJE');
 
+		var daddy = message.content.includes('daddy');
+		var Daddy = message.content.includes('Daddy');
+		var DADDY = message.content.includes('DADDY');
+
+		var gekoloniseerd = message.content.includes('gekoloniseerd');
+		var Gekoloniseerd = message.content.includes('Gekoloniseerd');
+		var GEKOLONISEERD = message.content.includes('GEKOLONISEERD');
+
+		var papa = message.content.includes('papa');
+		var Papa = message.content.includes('Papa');
+		var PAPA = message.content.includes('PAPA');
+
+		var vader = message.content.includes('vader');
+		var Vader = message.content.includes('Vader');
+		var VADER = message.content.includes('VADER');
+
 		if (
 			rutte == true ||
 			Rutte == true ||
@@ -66,7 +82,19 @@ bot.on('message', async (message) => {
 			MARKIE == true ||
 			markje == true ||
 			Markje == true ||
-			MARKJE == true
+			MARKJE == true ||
+			daddy == true ||
+			Daddy == true ||
+			DADDY == true ||
+			gekoloniseerd == true ||
+			Gekoloniseerd == true ||
+			GEKOLONISEERD == true ||
+			papa == true ||
+			Papa == true ||
+			PAPA == true ||
+			vader == true ||
+			Vader == true ||
+			VADER == true
 		) {
 			var randomRutte = Math.floor(Math.random() * 5) + 1;
 
