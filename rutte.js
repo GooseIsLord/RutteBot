@@ -5,7 +5,11 @@ const isImageUrl = require('is-image-url');
 
 const fs = require('fs');
 
-const bot = new discord.Client();
+const bot = new discord.Client({
+	ws: {
+		intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_WEBHOOKS"]
+	}
+});
 bot.commands = new discord.Collection();
 
 // if the bot is ready say it is online and fill in the little playing
@@ -18,20 +22,9 @@ bot.on('ready', async () => {
 
 // if a message is sent
 bot.on('message', async message => {
-	var con = mysql.createConnection({
-		host: botConfig.host,
-		user: botConfig.user,
-		password: botConfig.password,
-		database: botConfig.database,
-	});
 
 	// if bot sends a message return
 	if (message.author.bot) return;
-
-	// if the message is in the dm channel return nothing bc i don't want that
-	if (message.channel.type === 'dm') {
-		return;
-	}
 
 	if (message.content === '*help') {
 		return message.channel.send(
@@ -103,50 +96,39 @@ bot.on('message', async message => {
 			var randomRutte = Math.floor(Math.random() * 5) + 1;
 
 			if (randomRutte === 1) {
-				con.query(`SELECT * FROM mark`, function (err, rows) {
-					// if there is a error, throw it my way
-					if (err) {
-						throw err;
-					}
-
-					var rand = Math.floor(Math.random() * rows.length);
-
-					return message.channel.send({
-						files: [rows[rand].link],
-					});
-				});
+				sendRutte()
 			}
 		} else if (caroliene === true || Caroliene === true || CAROLIENE === true) {
-			con.query(`SELECT * FROM mark`, function (err, rows) {
-				// if there is a error, throw it my way
-				if (err) {
-					throw err;
-				}
-
-				var rand = Math.floor(Math.random() * rows.length);
-
-				return message.channel.send({
-					files: [rows[rand].link],
-				});
-			});
+			sendRutte()
 		} else {
 			var random = Math.floor(Math.random() * 10) + 1;
 
 			if (random == 1) {
-				con.query(`SELECT * FROM mark`, function (err, rows) {
-					// if there is a error, throw it my way
-					if (err) {
-						throw err;
-					}
-
-					var rand = Math.floor(Math.random() * rows.length);
-
-					return message.channel.send({
-						files: [rows[rand].link],
-					});
-				});
+				sendRutte()
 			}
 		}
+	}
+
+	function sendRutte() {
+		var con = mysql.createConnection({
+			host: botConfig.host,
+			user: botConfig.user,
+			password: botConfig.password,
+			database: botConfig.database,
+		});
+
+		con.query(`SELECT * FROM mark`, function (err, rows) {
+			// if there is a error, throw it my way
+			if (err) {
+				throw err;
+			}
+
+			var rand = Math.floor(Math.random() * rows.length);
+
+			return message.channel.send({
+				files: [rows[rand].link],
+			});
+		});
 	}
 });
 
