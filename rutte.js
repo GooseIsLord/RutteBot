@@ -9,6 +9,10 @@ const bot = new discord.Client({
 });
 bot.commands = new discord.Collection();
 
+const cheweyBotAnalyticsAPI = require("discord-bot-analytics")
+const customAnalytics = new cheweyBotAnalyticsAPI(botConfig.trackingToken, bot)
+
+
 // if the bot is ready say it is online and fill in the little playing
 // thingy you have on discord when you are playing an game
 bot.on('ready', async () => {
