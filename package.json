@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "discord-bot-analytics": "^1.0.14",
-    "discord.js": "^12.3.1",
+    "discord.js": "^13.6.0",
     "is-image-url": "^1.1.8",
     "mysql": "^2.18.1"
   }
