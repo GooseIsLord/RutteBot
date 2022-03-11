@@ -23,10 +23,6 @@ bot.once('ready',  () => {
 
 // if a message is sent
 bot.on('messageCreate', (message) => {
-
-	// if bot sends a message return
-	if (message.author.bot) return;
-
 	// random chance: 1/20 chance that a Rutte picture is shown
 	var random = Math.floor(Math.random() * 20) + 1;
 	if (random == 1) {
