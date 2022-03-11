@@ -70,6 +70,11 @@ bot.on('messageCreate', (message) => {
 		description: ":)"
 	})
 
+	commands.create({
+		name: "invite",
+		description: ";)"
+	})
+
 });
 
 bot.on('interactionCreate', async (interaction) => {
@@ -81,6 +86,11 @@ bot.on('interactionCreate', async (interaction) => {
 	if (commandName === 'help'){
 		interaction.reply({
 			content: 'The bot is simple. For every message you sent there is a 1/20 chance you get a random (and publicly available) picture from the prime minister of the Netherlands: Mark Rutte.'
+		})
+	}else if (commandName === 'invite'){
+		interaction.reply({
+			content: 'https://discord.com/api/oauth2/authorize?client_id=692139313848254564&permissions=274877910016&scope=bot%20applications.commands',
+			ephemeral: true
 		})
 	}
 })
